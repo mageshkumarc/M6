@@ -10,9 +10,30 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main() {
+    int x, y, area;
+    int *ptr;
+
+    printf("Enter the length: ");
+    scanf("%d", &x);
+
+    printf("Enter the breadth: ");
+    scanf("%d", &y);
+
+    ptr = &y;
+    area = x * (*ptr);
+
+    printf("Area of rectangle = %d\n", area);
+
+    return 0;
+}
+```
 ## OUTPUT
 		       	
+<img width="311" height="171" alt="image" src="https://github.com/user-attachments/assets/68a1721d-6d78-4d51-b404-f798d66bf1d5" />
 
 
 ## RESULT
@@ -34,8 +55,32 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+int main() {
+    char *str;
+
+    str = (char *)malloc(8 * sizeof(char));
+
+    if (str == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    strcpy(str, "WELCOME");
+
+    printf("%s\n", str);
+
+    free(str);
+
+    return 0;
+}
+```
 ## OUTPUT
+<img width="221" height="122" alt="image" src="https://github.com/user-attachments/assets/657f9d19-c775-4b6b-a963-fc9e54627661" />
 
 
 
@@ -60,9 +105,38 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct student {
+    char name[50];
+    int roll;
+    float marks;
+};
+
+int main() {
+    struct student s;
+
+    printf("Enter name: ");
+    scanf(" %[^\n]", s.name);
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.roll);
+
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", s.name);
+    printf("Roll Number: %d\n", s.roll);
+    printf("Marks: %.2f\n", s.marks);
+
+    return 0;
+}
+```
 
 ## OUTPUT
+<img width="360" height="297" alt="image" src="https://github.com/user-attachments/assets/f6190374-3766-4aa5-ba71-f850ce53b304" />
 
 
 ## RESULT
@@ -87,11 +161,47 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct employee {
+    char name[50];
+    int id;
+    float basic, hra, da, gross;
+};
+
+int main() {
+    struct employee e[3];
+    int i;
+
+    for (i = 0; i < 3; i++) {
+        printf("Enter name of employee %d: ", i + 1);
+        scanf(" %[^\n]", e[i].name);
+        printf("Enter ID of employee %d: ", i + 1);
+        scanf("%d", &e[i].id);
+        printf("Enter basic salary of employee %d: ", i + 1);
+        scanf("%f", &e[i].basic);
+
+        e[i].hra = e[i].basic * 0.10;
+        e[i].da = e[i].basic * 0.05;
+        e[i].gross = e[i].basic + e[i].hra + e[i].da;
+    }
+
+    printf("\nEmployee Details:\n");
+    for (i = 0; i < 3; i++) {
+        printf("Name: %s\n", e[i].name);
+        printf("ID: %d\n", e[i].id);
+        printf("Gross Salary: %.2f\n\n", e[i].gross);
+    }
+
+    return 0;
+}
+```
 
  ## OUTPUT
 
- 
+ <img width="480" height="706" alt="image" src="https://github.com/user-attachments/assets/5cc5cf7b-809d-493b-945d-858b14b2f67b" />
+
 
 ## RESULT
 
@@ -134,11 +244,47 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct student {
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+};
+
+int main() {
+    struct student s[2];
+    int i, j;
+
+    for (i = 0; i < 2; i++) {
+        printf("Enter marks for student %d:\n", i + 1);
+        for (j = 0; j < 5; j++) {
+            scanf("%d", &s[i].subject[j]);
+        }
+    }
+
+    for (i = 0; i < 2; i++) {
+        s[i].total = 0;
+        for (j = 0; j < 5; j++) {
+            s[i].total += s[i].subject[j];
+        }
+    }
+
+    for (i = 0; i < 2; i++) {
+        printf("Total marks of student %d: %d\n", i + 1, s[i].total);
+        printf("Average marks of student %d: %.2f\n", i + 1, s[i].total / 5.0);
+    }
+
+    return 0;
+}
+```
 
 ## OUTPUT
 
- 
+ <img width="382" height="331" alt="image" src="https://github.com/user-attachments/assets/ee1ed96b-d8a3-44ae-b3b5-5d76d38ebc78" />
+
 
 ## RESULT
 
